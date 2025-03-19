@@ -1,5 +1,5 @@
 <?php
-include 'index.php';
+include 'crear-entrada.php';
 
 if (isset($_GET['id'])) {
     $id = intval($_GET['id']);

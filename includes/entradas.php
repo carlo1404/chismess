@@ -1,5 +1,5 @@
 <?php
-include 'index.php';
+include 'crear-entrada.php';
 
 $sql = "SELECT e.id, e.titulo, e.descripcion, e.fecha, c.nombre AS categoria
         FROM entradas e
