@@ -1,4 +1,5 @@
-<?php require_once 'includes/header.php';?>
-<?php require_once 'includes/barra.php';?>
-<?php include  'includes/db.php'?>
-
+<?php
+include 'includes/header.php';
+include 'includes/barra.php';
+include 'includes/db.php';
+require_once 'includes/footer.php'; ?>
