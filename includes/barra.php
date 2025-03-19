@@ -38,7 +38,7 @@
                 <div id="register" class="bloque">
                     <h3>Registrarse</h3>
                     
-                    <!-- Mostrar errores -->
+                    <!-- Mostrar errores --> 
                     <div class="alerta alerta-exito">
                         {Se registro correctamente}
                     </div>
