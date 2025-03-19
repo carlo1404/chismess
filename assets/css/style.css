@@ -304,3 +304,103 @@ input[type="submit"],
 .crear-entrada input[type="submit"]:hover {
     background: var(--primary1-); /* Color más oscuro al pasar el mouse */
 }
+
+
+/* Estilos generales para crear categoria */
+
+/* Contenedor principal */
+#contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Alinea ambos elementos en la parte superior */
+    flex-wrap: wrap;
+    width: 80%;
+    max-width: 950px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #fafafa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Tabla de categorías */
+#tabla-categorias {
+    width: 55%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+#tabla-categorias table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#tabla-categorias th,
+#tabla-categorias td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+#tabla-categorias th {
+    background: #007bff;
+    color: white;
+}
+
+/* Formulario de creación */
+#crear-categoria {
+    width: 40%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+#crear-categoria form {
+    display: flex;
+    flex-direction: column;
+}
+
+#crear-categoria label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+#nombre {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 12px;
+}
+
+#btn-crear {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+#btn-crear:hover {
+    background: #218838;
+}
+
+/* Ajustes para que el formulario no quede debajo en pantallas más pequeñas */
+@media (max-width: 768px) {
+    #contenedor {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #tabla-categorias, #crear-categoria {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+}
