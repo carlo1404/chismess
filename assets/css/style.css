@@ -251,3 +251,56 @@ input[type="submit"],
     padding: 15px;
     text-align: center;
 }
+
+
+.crear-entrada {
+    width: 90%; /* Que ocupe casi todo el ancho de la sección principal */
+    max-width: 600px;
+    margin: 20px auto; /* Centrado */
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Si está dentro de #principal, aseguramos que se alinee correctamente */
+#principal .crear-entrada {
+    margin: 0 auto;
+}
+
+.crear-entrada label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.crear-entrada input,
+.crear-entrada textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.crear-entrada textarea {
+    height: 120px;
+    resize: none;
+}
+
+.crear-entrada input[type="submit"] {
+    background: var(--primary-); /* Usar el color principal */
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.3s ease;
+}
+
+.crear-entrada input[type="submit"]:hover {
+    background: var(--primary1-); /* Color más oscuro al pasar el mouse */
+}
