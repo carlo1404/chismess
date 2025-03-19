@@ -1,9 +1,11 @@
 <?php require_once 'includes/header.php';?>
 <?php require_once 'includes/barra.php';?>
 
+
+
 <!-- CAJA PRINCIPAL -->
 <div id="principal">
-                <h1>Últimas entradas</h1>
+                <h1>CHISMES</h1>
                 <article class="entrada">
                     <a href="entrada.php?id=<?=$entrada['id']?>">
                         <h2>{Titulo Entrada}</h2>
