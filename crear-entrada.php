@@ -1,5 +1,5 @@
 <?php
-include 'index.php';
+include 'crear-entrada.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $titulo = $_POST['titulo'];
