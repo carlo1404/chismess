@@ -57,7 +57,7 @@
                 </article>
                 
                 <div id="ver-todas">
-                    <a href="entradas.php">Ver todas las entradas</a>
+                    <a href="categoria.php">Ver todas las entradas</a>
                 </div>
             </div> <!--fin principal-->
             
