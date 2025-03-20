@@ -16,18 +16,17 @@
     
     if ($resultadoCategoria->num_rows == 1) {
         $categoria = $resultadoCategoria->fetch_assoc();
-        echo "<h1>Entradas en la categoría: " . htmlspecialchars($categoria['nombre']) . "</h1>";
+        echo "<h1>Todas las entradas en la categoría: " . htmlspecialchars($categoria['nombre']) . "</h1>";
     } else {
         echo "<h1 class='mensaje-error'>Categoría no encontrada</h1>";
         exit;
     }
 
-    // Obtener las entradas de la categoría seleccionada (máximo 5)
+    // Obtener todas las entradas de la categoría
     $queryEntradas = "SELECT id, titulo, descripcion, fecha 
-                      FROM entradas 
-                      WHERE categoria_id = ? 
-                      ORDER BY fecha DESC 
-                      LIMIT 5"; // Se limita a 5 entradas
+                        FROM entradas 
+                        WHERE categoria_id = ? 
+                        ORDER BY fecha DESC"; // Se eliminó el límite
 
     $stmt = $conn->prepare($queryEntradas);
     $stmt->bind_param("i", $id_categoria);
@@ -51,9 +50,9 @@
     }
     ?>
     
-    <!-- Botón para ver todas las entradas de esta categoría -->
+    <!-- Botón para volver a la categoría -->
     <div id="ver-todas">
-        <a href="todas-entradas.php?id=<?= $id_categoria ?>">Ver todas las entradas</a>
+        <a href="categoria.php?id=<?= $id_categoria ?>">Volver a la categoría</a>
     </div>
 
     <!-- Botón para volver al inicio -->

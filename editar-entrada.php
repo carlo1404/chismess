@@ -1,55 +1,40 @@
-<?php
-require_once 'db.php';
-require_once 'header.php';
+<?php include 'includes/header.php'; ?>
+<?php include 'includes/barra.php'; ?>
+<?php include 'includes/db.php'; ?> 
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $query = "SELECT * FROM entradas WHERE id = $id";
-    $result = mysqli_query($conn, $query);
-    $entrada = mysqli_fetch_assoc($result);
-}
+<div id="principal">
+    <h1>Todas las Entradas</h1>
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $titulo = trim($_POST['titulo']);
-    $descripcion = trim($_POST['descripcion']);
-    $categoria_id = $_POST['categoria'];
+    <?php
+    // Obtener todas las entradas
+    $queryEntradas = "SELECT e.id, e.titulo, e.descripcion, e.fecha, c.nombre AS categoria 
+                    FROM entradas e
+                    INNER JOIN categorias c ON e.categoria_id = c.id
+                    ORDER BY e.fecha DESC";
 
-    if (!empty($titulo) && !empty($descripcion)) {
-        $sql = "UPDATE entradas SET titulo='$titulo', descripcion='$descripcion', categoria_id='$categoria_id' WHERE id=$id";
-        $update = mysqli_query($conn, $sql);
+    $resultadoEntradas = $conn->query($queryEntradas);
 
-        if ($update) {
-            echo "<p>Entrada actualizada con éxito.</p>";
-        } else {
-            echo "<p>Error al actualizar la entrada.</p>";
+    if ($resultadoEntradas->num_rows > 0) {
+        while ($entrada = $resultadoEntradas->fetch_assoc()) {
+            ?>
+            <article class="entrada">
+                <a href="entrada.php?id=<?= $entrada['id'] ?>">
+                    <h2><?= htmlspecialchars($entrada['titulo']) ?></h2>
+                    <span class="fecha"><?= htmlspecialchars($entrada['categoria']) ?> | <?= $entrada['fecha'] ?></span>
+                    <p><?= substr(htmlspecialchars($entrada['descripcion']), 0, 150) ?>...</p>
+                </a>
+            </article>
+            <?php
         }
     } else {
-        echo "<p>Todos los campos son obligatorios.</p>";
+        echo "<p class='mensaje-error'>No hay entradas disponibles.</p>";
     }
-}
-?>
+    ?>
 
-<h2>Editar Entrada</h2>
-<form action="editar-entrada.php?id=<?= $id ?>" method="POST">
-    <label for="titulo">Título:</label>
-    <input type="text" name="titulo" value="<?= $entrada['titulo'] ?>" required>
+    <div id="ver-todas">
+        <a href="index.php">Volver al inicio</a>
+    </div>
+</div> <!-- Fin principal -->
 
-    <label for="descripcion">Descripción:</label>
-    <textarea name="descripcion" required><?= $entrada['descripcion'] ?></textarea>
-
-    <label for="categoria">Categoría:</label>
-    <select name="categoria">
-        <?php
-        $categorias = mysqli_query($conn, "SELECT * FROM categorias");
-        while ($cat = mysqli_fetch_assoc($categorias)) {
-            $selected = ($cat['id'] == $entrada['categoria_id']) ? "selected" : "";
-            echo "<option value='{$cat['id']}' $selected>{$cat['nombre']}</option>";
-        }
-        ?>
-    </select>
-
-    <button type="submit">Actualizar</button>
-</form>
-
-<?php require_once 'footer.php'; ?>
-2
+</div> <!-- Fin contenedor -->
+<?php require_once 'includes/footer.php'; ?>
