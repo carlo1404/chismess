@@ -24,10 +24,10 @@
 
     // Obtener las entradas de la categoría seleccionada (máximo 5)
     $queryEntradas = "SELECT id, titulo, descripcion, fecha 
-                      FROM entradas 
-                      WHERE categoria_id = ? 
-                      ORDER BY fecha DESC 
-                      LIMIT 5"; // Se limita a 5 entradas
+                    FROM entradas 
+                    WHERE categoria_id = ? 
+                    ORDER BY fecha DESC 
+                    LIMIT 5"; // Se limita a 5 entradas
 
     $stmt = $conn->prepare($queryEntradas);
     $stmt->bind_param("i", $id_categoria);

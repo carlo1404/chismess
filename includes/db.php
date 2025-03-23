@@ -1,17 +1,22 @@
 <?php
 // Configuración de la base de datos
 $servidor = "localhost";
-$usuario = "root"; // Usuario de phpMyAdmin en XAMPP
-$password = ""; // En XAMPP, root no tiene contraseña
-$basededatos = "chismea"; // Aquí colocamos el nombre correcto de la BD
+$usuario = "root"; // Usuario por defecto en XAMPP
+$password = ""; // Sin contraseña en XAMPP
+$basededatos = "chismea"; // Asegúrate de que el nombre esté correcto
 
-// Crear conexión
-$conn = mysqli_connect($servidor, $usuario, $password, $basededatos);
+// Activar el informe de errores de MySQLi
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-// Verificar conexión
-if (!$conn) {
-    die("Error de conexión: " . mysqli_connect_error());
+try {
+    // Crear conexión
+    $conn = new mysqli($servidor, $usuario, $password, $basededatos);
+    
+    // Establecer el conjunto de caracteres a UTF-8
+    $conn->set_charset("utf8");
+
+} catch (mysqli_sql_exception $e) {
+    // Manejo de errores más seguro
+    die("❌ Error de conexión a la base de datos: " . $e->getMessage());
 }
-
-mysqli_set_charset($conn, "utf8"); // Para que acepte caracteres especiales como tildes
 ?>
