@@ -1,18 +1,18 @@
-/* FUENTES */
+/* FUENTES Y VARIABLES */
 :root {
-    --primary-color: #d21e78db;
-    --primary-light: #d82e2ecc;
+    --primary-color: #d21e78;
+    --primary-light: #d82e2e;
     --secondary-color: #007ee5;
     --secondary-light: #00aaff;
     --text-color: #333;
-    --light-gray: #f9f9f9;
+    --background-light: #f9f9f9;
     --border-color: #ddd;
-    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;700&display=swap');
 
-/* GENERALES */
+/* RESET Y GENERALES */
 * {
     margin: 0;
     padding: 0;
@@ -24,39 +24,43 @@ body {
     background: url(../img/cubes.png) #eaeaea;
     font-size: 16px;
     color: var(--text-color);
+    line-height: 1.6;
 }
 
-/* CONTENEDORES PRINCIPALES */
+/* CONTENEDOR PRINCIPAL */
 #contenedor {
     width: 85%;
-    max-width: 1100px;
+    height: auto;
+    max-width: 1200px;
     margin: 30px auto;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 25px;
 }
 
 /* CABECERA */
 #cabecera {
     width: 100%;
-    padding: 20px 0;
+    padding: 25px 0;
     text-align: center;
-    background-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
     color: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow);
+    border-radius: 10px;
 }
 
 #logo {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
 }
 
 #logo a {
     color: white;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s;
 }
 
 #logo a:hover {
@@ -67,15 +71,16 @@ body {
 #menu {
     display: flex;
     justify-content: center;
-    background: var(--light-gray);
-    border-radius: 8px;
-    box-shadow: 0 2px 5px var(--shadow-color);
+    background: var(--background-light);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
     margin-top: 20px;
+    padding: 15px;
 }
 
 #menu ul {
     display: flex;
-    gap: 15px;
+    gap: 20px;
 }
 
 #menu ul li {
@@ -83,273 +88,197 @@ body {
 }
 
 #menu ul li a {
-    padding: 10px 20px;
+    padding: 12px 25px;
     color: var(--text-color);
     text-decoration: none;
-    font-weight: 500;
-    transition: background 0.3s ease;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.2s;
 }
 
 #menu ul li a:hover {
     background-color: var(--secondary-light);
     color: white;
+    transform: scale(1.1);
 }
 
 /* PRINCIPAL */
 #principal {
-    width: 70%;
+    flex: 1;
     background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px var(--shadow-color);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
 }
 
 #principal h1 {
-    font-size: 2rem;
+    font-size: 2.8rem;
     color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-#principal h2 {
-    font-size: 1.5rem;
-    color: var(--secondary-color);
-    margin-top: 15px;
-}
-
-#principal p {
-    margin-top: 10px;
-    font-size: 1rem;
+    margin-bottom: 15px;
 }
 
 /* ENTRADAS (CHISMES) */
 .entrada-container {
-    background-color: #fff;
+    background: white;
     padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px var(--shadow-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .entrada-container:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.entrada-container h3 {
-    font-size: 1.1rem;
-    color: var(--primary-color);
-    margin-bottom: 10px;
-}
-
-.entrada-container .categoria {
-    font-size: 0.9rem;
-    color: var(--secondary-color);
-    margin-bottom: 15px;
-}
-
-.entrada-container .entrada a {
-    text-decoration: none;
-    color: var(--text-color);
-}
-
-.entrada-container .entrada h2 {
-    font-size: 1.4rem;
-    color: var(--primary-color);
-    margin-bottom: 10px;
-}
-
-.entrada-container .entrada p {
-    color: var(--text-color);
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-#ver-todas a {
-    display: block;
-    text-align: center;
-    background-color: var(--secondary-color);
-    color: white;
-    padding: 15px;
-    text-transform: uppercase;
-    font-weight: 500;
-    border-radius: 8px;
-    margin-top: 40px;
-    text-decoration: none;
-    transition: background 0.3s ease;
-}
-
-#ver-todas a:hover {
-    background-color: var(--primary-color);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
 }
 
 /* BARRA LATERAL */
 #sidebar {
-    width: 25%;
+    width: 100%;
     background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px var(--shadow-color);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
 }
 
-.bloque {
-    margin-bottom: 30px;
-    padding: 15px;
-    background: var(--light-gray);
-    border-radius: 8px;
-    box-shadow: 0 2px 5px var(--shadow-color);
-}
-
-.bloque h3 {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
+#sidebar .bienvenida {
+    font-size: 1.5rem;
+    font-weight: bold;
     color: var(--primary-color);
-}
-
-label {
-    font-weight: 500;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-textarea {
-    width: 100%;
+    background: var(--background-light);
     padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border: 1px solid var(--border-color);
     border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow);
 }
 
-input[type="submit"],
-.boton {
+#sidebar .boton {
+    max-width: 400px;
+    margin: 0  auto;
     width: 100%;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+    #sidebar,#bienvenido{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    background: var(--background-light);
     padding: 10px;
-    background-color: var(--primary-color);
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow);
+}
+
+#sidebar .boton:hover {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-light));
+    transform: scale(1.08);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* FORMULARIOS */
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="submit"], .boton {
+    background: var(--primary-color);
     color: white;
     border: none;
-    border-radius: 8px;
-    font-size: 1rem;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
-input[type="submit"]:hover,
-.boton:hover {
-    background-color: var(--secondary-color);
+input[type="submit"]:hover, .boton:hover {
+    background: var(--secondary-color);
+    transform: scale(1.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* PIE DE PÁGINA */
 #pie {
     width: 100%;
-    padding: 20px;
-    background-color: var(--light-gray);
+    padding: 25px;
+    background: var(--background-light);
     text-align: center;
-    margin-top: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px var(--shadow-color);
-}
-
-#pie p {
-    font-size: 1rem;
-    color: var(--text-color);
-}
-
-/* Estilos para la página de crear entradas */
-.crear-entrada {
-    width: 100%;
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #fff;
+    margin-top: 35px;
     border-radius: 10px;
-    box-shadow: 0 2px 5px var(--shadow-color);
+    box-shadow: var(--shadow);
 }
-
-.crear-entrada label {
-    font-size: 1rem;
-    font-weight: 600;
-}
-
-.crear-entrada input,
-.crear-entrada textarea {
+/* FORMULARIOS */
+#registro, #login {
+    max-width: 350px;
+    margin: 0 auto;
     width: 100%;
-    padding: 12px;
-    margin-top: 8px;
-    margin-bottom: 20px;
+    padding: 10px;
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
-.crear-entrada textarea {
-    resize: none;
-    height: 150px;
+#registro label, #login label {
+    display: block;
 }
 
-.crear-entrada input[type="submit"] {
+#registro input, #registro textarea, #login input, #login textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#registro input[type="submit"], #login input[type="submit"], .boton {
     background-color: var(--primary-color);
     color: white;
     border: none;
-    padding: 15px;
+    padding: 10px 20px;
+    border-radius: 10px;
     font-size: 1rem;
-    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
-.crear-entrada input[type="submit"]:hover {
+#registro input[type="submit"]:hover, #login input[type="submit"]:hover, .boton:hover {
     background-color: var(--secondary-color);
+    transform: scale(1.05);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
-
-/* Estilos para categorías en el panel de administración */
-#tabla-categorias {
-    width: 100%;
-    margin-top: 20px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px var(--shadow-color);
-}
-
-#tabla-categorias table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-#tabla-categorias th,
-#tabla-categorias td {
-    padding: 15px;
-    text-align: left;
-    border: 1px solid var(--border-color);
-}
-
-#tabla-categorias th {
-    background-color: var(--secondary-color);
-    color: white;
-}
-
-#tabla-categorias td a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-#tabla-categorias td a:hover {
-    color: var(--secondary-color);
-}
-
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 768px) {
     #contenedor {
         flex-direction: column;
     }
 
-    #principal {
-        width: 100%;
-    }
-
-    #sidebar {
+    #principal, #sidebar {
         width: 100%;
     }
 }

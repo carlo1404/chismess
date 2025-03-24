@@ -65,7 +65,7 @@ require_once 'includes/db.php';
                     ?>
                 <?php endif; ?>
 
-                <form method="POST" action="registro.php">
+                <form id="registro"" method="POST" action="registro.php">
                     <label for="nombre">Nombre</label>
                     <input type="text" name="nombre" required />
                     <label for="apellidos">Apellidos</label>

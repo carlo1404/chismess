@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         </script>
     <?php endif; ?>
 
-    <form action="registro.php" method="POST">
+    <form  action="registro.php" method="POST">
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" required>
 
