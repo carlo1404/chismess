@@ -22,7 +22,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     'apellidos' => $usuario['apellidos'],
                     'email' => $usuario['email']
                 ];
-                header("Location: index.php");
+
+                // Depuración: Verificar si la sesión contiene el usuario
+                echo 'Usuario autenticado correctamente: ' . $_SESSION['usuario']['nombre']; 
+                header("Location: index.php"); // Solo redirigir aquí después de que todo esté correcto
                 exit();
             } else {
                 $_SESSION['mensaje'] = "Contraseña incorrecta.";
@@ -38,7 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['mensaje'] = "Todos los campos son obligatorios.";
         $_SESSION['tipo_mensaje'] = "mensaje-error";
     }
+
+    // Redirigir siempre al final del flujo después de todo el proceso de login
     header("Location: index.php");
     exit();
 }
-?>

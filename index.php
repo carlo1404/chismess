@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
 include 'includes/header.php'; 
 include 'includes/barra.php'; 
 include 'includes/db.php'; 
@@ -44,21 +44,22 @@ unset($_SESSION['tipo_mensaje']);
     $resultadoEntradas = $conn->query($queryEntradas);
 
     if ($resultadoEntradas && $resultadoEntradas->num_rows > 0) {
-        while ($entrada = $resultadoEntradas->fetch_assoc()) {
     ?>
-            <div class="entrada-container">
-                <h3 class="usuario"><?= htmlspecialchars($entrada['usuario']) ?></h3>
-                <span class="categoria"><?= htmlspecialchars($entrada['categoria']) ?></span>
-                <article class="entrada">
-                    <a href="entrada.php?id=<?= $entrada['id'] ?>">
-                        <h2><?= htmlspecialchars($entrada['titulo']) ?></h2>
-                        <span class="fecha"><?= $entrada['fecha'] ?></span>
-                        <p><?= substr(htmlspecialchars($entrada['descripcion']), 0, 150) ?>...</p>
-                    </a>
-                </article>
-            </div>
+        <div class="chismes-container">
+            <?php while ($entrada = $resultadoEntradas->fetch_assoc()) { ?>
+                <div class="chisme">
+                    <div class="chisme-header">
+                        <span class="usuario"><?= htmlspecialchars($entrada['usuario']) ?></span>
+                        <span class="categoria"><?= htmlspecialchars($entrada['categoria']) ?></span>
+                    </div>
+                    <h3 class="titulo"><?= htmlspecialchars($entrada['titulo']) ?></h3>
+                    <span class="fecha"><?= $entrada['fecha'] ?></span>
+                    <p class="descripcion"><?= substr(htmlspecialchars($entrada['descripcion']), 0, 150) ?>...</p>
+                    <a class="leer-mas" href="entrada.php?id=<?= $entrada['id'] ?>">Leer más</a>
+                </div>
+            <?php } ?>
+        </div>
     <?php
-        }
     } else {
         echo "<p class='mensaje-error'>No hay entradas disponibles.</p>";
     }

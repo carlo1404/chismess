@@ -10,8 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre = trim($_POST['nombre']);
 
     if (!empty($nombre)) {
-        $stmt = $conn->prepare("INSERT INTO categorias (nombre, fecha_creacion) VALUES (?, NOW())");
-        $stmt->bind_param("s", $nombre);
+        // Preparar la consulta para insertar la categoría con el usuario_id
+        $stmt = $conn->prepare("INSERT INTO categorias (nombre, fecha_creacion, usuario_id) VALUES (?, NOW(), ?)");
+        $stmt->bind_param("si", $nombre, $_SESSION['usuario']['id']);
 
         if ($stmt->execute()) {
             $mensaje = "<p class='mensaje-exito'>Categoría creada con éxito.</p>";
@@ -24,9 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// Consultar las categorías existentes
-$query = "SELECT id, nombre, fecha_creacion FROM categorias ORDER BY fecha_creacion DESC";
-$categorias = $conn->query($query);
+// Consultar las categorías existentes del usuario logueado
+$query = "SELECT id, nombre, fecha_creacion FROM categorias WHERE usuario_id = ? ORDER BY fecha_creacion DESC";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $_SESSION['usuario']['id']);
+$stmt->execute();
+$categorias = $stmt->get_result();
 ?>
 
 <h2>Administración de Categorías</h2>
