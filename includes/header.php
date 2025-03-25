@@ -7,6 +7,7 @@ session_start(); // Iniciar la sesión aquí si no lo has hecho en otro lugar
         <meta charset="utf-8" />
         <title>Chismes</title>
         <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+        <link rel="icono" href="assets/img/imagen._icono.ico">
     </head>
     <body>
         <!-- CABECERA -->

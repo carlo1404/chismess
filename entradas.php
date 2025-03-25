@@ -36,7 +36,7 @@
     ?>
 
     <div id="ver-todas">
-        <a href="index.php">Volver al inicio</a>
+        <a id="ver-todas" href="index.php">Volver al inicio</a>
     </div>
 </div> <!-- Fin principal -->
 

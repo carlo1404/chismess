@@ -65,8 +65,8 @@ unset($_SESSION['tipo_mensaje']);
     }
     ?>
 
-    <div id="ver-todas">
-        <a href="entradas.php">Ver todas las entradas</a>
+    <div id="ver-todas"class="ver-todass">
+        <a id="ver-todas" href="entradas.php">Ver todos los chismes</a>
     </div>
 </div> <!-- Fin principal -->
 
