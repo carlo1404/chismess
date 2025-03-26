@@ -1,5 +1,7 @@
 <?php
-session_start(); // Iniciar la sesión aquí si no lo has hecho en otro lugar
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+} // Iniciar la sesión aquí si no lo has hecho en otro lugar
 ?>
 <!DOCTYPE HTML>
 <html lang="es">

@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $_SESSION['mensaje'] = "¡Inicio de sesión exitoso!";
                 $_SESSION['tipo_mensaje'] = "exito";
-                header("Location: index.php");
+                header("Location: index.php"); // Redirigir a la página principal
                 exit();
             } else {
                 $_SESSION['mensaje'] = "Contraseña incorrecta.";
@@ -44,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-header("Location: index.php");
+// Si hay un error, redirigir al formulario de login
+header("Location: login.php");
 exit();
 ?>

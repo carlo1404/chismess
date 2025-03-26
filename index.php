@@ -1,5 +1,5 @@
-<?php 
-
+<?php
+session_start(); // Iniciar la sesión al principio del archivo
 include 'includes/header.php'; 
 include 'includes/barra.php'; 
 include 'includes/db.php'; 
@@ -32,6 +32,12 @@ unset($_SESSION['tipo_mensaje']);
     <?php endif; ?>
 
     <?php
+    // Verificar si el usuario está autenticado
+    if (isset($_SESSION['usuario_id'])) {
+        // Si el usuario está autenticado, mostrar el botón de "Mis Datos"
+        echo '<a href="mis-datos.php" class="boton-mis-datos">Mis Datos</a>';
+    }
+
     // Obtener las últimas 5 entradas con su usuario y categoría
     $queryEntradas = "SELECT e.id, e.titulo, e.descripcion, e.fecha, 
                             c.nombre AS categoria, u.nombre AS usuario 
@@ -65,7 +71,7 @@ unset($_SESSION['tipo_mensaje']);
     }
     ?>
 
-    <div id="ver-todas"class="ver-todass">
+    <div id="ver-todas" class="ver-todass">
         <a id="ver-todas" href="entradas.php">Ver todos los chismes</a>
     </div>
 </div> <!-- Fin principal -->
